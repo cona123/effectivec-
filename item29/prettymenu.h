@@ -4,19 +4,19 @@
 #include <mutex>
 #include <iostream>
 
-// void Unlock(std::mutex* pm1) {
+void Unlock(std::mutex* pm1); //{
 //     pm1->unlock();
 // }
 
-// class Lockguard {
-//     public:
-//         explicit Lockguard(std::mutex* pm) : pm_(pm,Unlock)
-//         {
-//             pm_.get()->lock();
-//         }
-//     private:
-//         std::shared_ptr<std::mutex> pm_;
-// };
+class Lockguard {
+    public:
+        explicit Lockguard(std::mutex* pm) : pm_(pm,Unlock)
+        {
+            pm_.get()->lock();
+        }
+    private:
+        std::shared_ptr<std::mutex> pm_;
+};
 
 
 struct PMImpl {
